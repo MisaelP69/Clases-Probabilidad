@@ -1,0 +1,35 @@
+---
+title: "Ejercicios de Práctica en R"
+format: html
+editor: visual
+date: "2025-05-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# **1. Ejemplo de un tirador**
+Imaginemos que tenemos un cuadrado con un lado de longitud `s`, dentro del cual hemos inscrito un círculo de radio `r`. La idea es simular un lanzamiento de puntos al azar dentro del cuadrado y calcular la probabilidad de que el punto caiga dentro del círculo. 
+
+La probabilidad geométrica de este evento se puede modelar como la proporción de áreas del círculo y el cuadrado. Es decir, si conocemos el área de ambos, la probabilidad de que un punto caiga dentro del círculo será el cociente entre el área del círculo y el área del cuadrado.
+
+
+```{r}
+# Parámetros
+s <- 20
+r <- 4
+
+# Visualización
+plot(c(0, s), c(0, s), type = "n", xlab = "x", ylab = "y",
+     main = "Probabilidad Geométrica: Punto en un Área")
+rect(0, 0, s, s) # Cuadrado
+symbols(s / 2, s / 2, circles = r, inches = FALSE, add = TRUE, fg = "red") # Círculo
+text(s / 2, s * 0.9, paste("Área Cuadrado =", s^2), cex = 0.8)
+text(s / 2, s * 0.1, paste("Área Círculo =", round(pi * r^2, 2)), col = "red", cex = 0.8)
+
+prob <- (pi * r^2)/s^2
+
+
+```
